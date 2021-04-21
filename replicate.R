@@ -1,4 +1,5 @@
-### Use leveneTest from car package
+rm(list=ls())
+### Use leveneTest  function from car package
 install.packages("car")
 library(car)
 
@@ -22,6 +23,11 @@ x <- factor(c(rep("1",n),
               rep("4",n)))
 
 
+## The replicate takes a couple of minutes to run.
 res <-replicate(10000,aov_sim(x,n,alpha))
+## Create TRUE/FALSE Summary Table
+barplot(table(res))
 
-rowMeans(res)
+summary(res)
+
+# rowMeans(res)
